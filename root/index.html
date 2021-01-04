@@ -18,15 +18,40 @@
       /*width: 218px;*/
     }
     </style> 
+     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script type="text/javascript">
         $(function () {
+            let params = new URLSearchParams(window.location.search)
+            console.log(params.get('language'))
+            let language_ = params.get('language')
+
+            if (language_ == 'ar') {
+                document.getElementById('firstname').innerHTML = "الاسم الاول";
+                document.getElementById('lastname').innerHTML = "الكنية";
+                document.getElementById('email').innerHTML = "عنوان الايميل";
+                document.getElementById('phone').innerHTML = "رقم الهاتف المحمول";
+                document.getElementById('submit').placeholder = "إرسال";
+
+            }
+            else {
+                document.getElementById('firstname').innerHTML = "First name";
+                document.getElementById('lastname').innerHTML = "Last name";
+                document.getElementById('email').innerHTML = "Email id";
+                document.getElementById('phone').innerHTML = "Mobile Number";
+                document.getElementById('submit').placeholder = "Submit";
+            }
+
             $("#submit").click(function () {
                 console.log("--CLICKED ON SUBMIT---")
                 var a, b, c;
     var firstname = $("#firstname").val()
     if (firstname == "") {
         document.getElementById('firstname_error').style.display = 'inline';
-        document.getElementById('firstname_error').innerHTML = "Please enter the first name";
+        if(language_ == 'ar'){
+            document.getElementById('firstname_error').innerHTML = "الرجاء إدخال الاسم الأول";
+        }else{
+            document.getElementById('firstname_error').innerHTML = "Please enter the first name";
+        }
         return false;
     } else {
         a = 'ok'
@@ -34,7 +59,11 @@
         var lastname = $("#lastname").val()
         if (lastname == "") {
             document.getElementById('lastname_error').style.display = 'inline';
-            document.getElementById('lastname_error').innerHTML = "Please enter the last name";
+            if(language_ == 'ar'){
+                document.getElementById('lastname_error').innerHTML = "الرجاء إدخال الاسم الأخير";
+            }else{
+                document.getElementById('lastname_error').innerHTML = "Please enter the last name";
+            }
             return false;
         } else {
             b = 'ok'
@@ -42,7 +71,11 @@
             var email = $("#email").val()
             if (email == "") {
                 document.getElementById('email_error').style.display = 'inline';
-                document.getElementById('email_error').innerHTML = "Please enter the email id";
+                if(language_ == 'ar'){
+                    document.getElementById('email_error').innerHTML = "الرجاء إدخال معرف البريد الإلكتروني";
+                }else{
+                    document.getElementById('email_error').innerHTML = "Please enter the email id";
+                }
                 return false;
             } else {
                 var re = /[A-Za-z\d]+([-._+]?[A-Za-z\d]+)*@[A-Za-z\d]+(-?[A-Za-z\d])*([.][A-Za-z\d]{2,})+/;
@@ -51,7 +84,11 @@
                 if (!x) {
                     console.log("---em")
                     document.getElementById('email_error').style.display = 'inline';
-                    document.getElementById('email_error').innerHTML = "Please enter a valid email id";
+                    if(language_ == 'ar'){
+                        document.getElementById('email_error').innerHTML = "الرجاء إدخال معرف بريد إلكتروني صالح";
+                    }else{
+                        document.getElementById('email_error').innerHTML = "Please enter a valid email id";
+                    }
                     return false;
                 } else {
                     c = 'ok'
@@ -61,7 +98,11 @@
                     var check = re.test(mobile);
                     if (mobile != "" && !check ) {
                         document.getElementById('phone_error').style.display = 'inline';
-                        document.getElementById('phone_error').innerHTML = "Please enter a valid mobile number";
+                        if(language_ == 'ar'){
+                            document.getElementById('phone_error').innerHTML = "الرجاء إدخال رقم جوال صحيح";
+                        }else{
+                            document.getElementById('phone_error').innerHTML = "Please enter a valid mobile number";
+                        }
                         return false;
                     } else {
                         document.getElementById('phone_error').innerHTML = "";
@@ -110,20 +151,21 @@
 	<br>
     <div class="container" style="padding: 0;" id="custom">
     	<form class="main" style="width: 200px">
-    	<input type="text"  id="firstname" placeholder="First name" required name="firstname" size="23">
+    	<input type="text"  id="firstname" required name="firstname" size="23">
     	<br><label id='firstname_error'></label>
 		<br>
-    	<input type="text"  id="lastname" placeholder="Last name" required  name="firstname" size="23">
+    	<input type="text"  id="lastname" required  name="firstname" size="23">
     	<br><label id='lastname_error'></label>
 		<br>
-    	<center><strong><ul id="add"></ul></strong></center>
-    	<input type="email" id="email" placeholder="Email id" required name="email" size="23">
+    	
+    	<input type="email" id="email" required name="email" size="23">
     	<br><label id='email_error'></label>
 		<br>
-    	<input type="tel" id="phone" placeholder="Mobile Number" name="phone" size="23">
+    	<input type="tel" id="phone" name="phone" size="23">
     	<br><label id='phone_error'></label>
 		<br>
     	<input type="submit" value="Submit"  id="submit" style="margin-top: 10px; color: #813588" >
+        <center><strong><ul id="add"></ul></strong></center>
 		</form>
     </div>
 </div>
