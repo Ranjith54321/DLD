@@ -136,7 +136,11 @@
                                 $(this).find(':input').attr('disabled', 'disabled');
                                 $(this).find('label').css('cursor', 'default');
                             });
-                            $('#add').append("Thank You");
+                                if(language_ == 'ar'){
+                                        $('#add').append("شكرا لك");
+                                   }else{
+                                        $('#add').append("Thank You");
+                                    }
                         } else {
                             console.log("---else--")
                         }
