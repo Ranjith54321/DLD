@@ -26,18 +26,18 @@
             let language_ = params.get('language')
 
             if (language_ == 'ar') {
-                document.getElementById('firstname').innerHTML = "الاسم الاول"; //placeholder
-                document.getElementById('lastname').innerHTML = "الكنية";
-                document.getElementById('email').innerHTML = "عنوان الايميل";
-                document.getElementById('phone').innerHTML = "رقم الهاتف المحمول";
+                document.getElementById('firstname').placeholder = "الاسم الاول"; //placeholder
+                document.getElementById('lastname').placeholder = "الكنية"; //innerHTML
+                document.getElementById('email').placeholder = "عنوان الايميل";
+                document.getElementById('phone').placeholder = "رقم الهاتف المحمول";
                 document.getElementById('submit').placeholder = "إرسال";
 
             }
             else {
-                document.getElementById('firstname').innerHTML = "First name";
-                document.getElementById('lastname').innerHTML = "Last name";
-                document.getElementById('email').innerHTML = "Email id";
-                document.getElementById('phone').innerHTML = "Mobile Number";
+                document.getElementById('firstname').placeholder = "First name";
+                document.getElementById('lastname').placeholder = "Last name";
+                document.getElementById('email').placeholder = "Email id";
+                document.getElementById('phone').placeholder = "Mobile Number";
                 document.getElementById('submit').placeholder = "Submit";
             }
 
