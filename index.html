@@ -20,7 +20,7 @@
     </style> 
      <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script type="text/javascript">
-        $(document).(function () {
+        $(document).ready(function () {
             let params = new URLSearchParams(window.location.search)
             console.log(params.get('language'))
             let language_ = params.get('language')
