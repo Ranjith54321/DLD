@@ -122,7 +122,7 @@
         $(function () {
             $("#submit").click(function () {
                 console.log("--CLICKED ON SUBMIT---")
-                var a, b, c;
+                var a, b, c, d;
     var firstname = $("#firstname").val()
     if (firstname == "") {
         document.getElementById('firstname_error').style.display = 'inline';
@@ -174,10 +174,21 @@
                 } else {
                     c = 'ok'
                     document.getElementById('email_error').innerHTML = "";
+                    //
                     var mobile = $("#phone").val()
+                    if (mobile == "") {
+                        document.getElementById('phone_error').style.display = 'inline';
+                        if(language_ == 'ar'){
+                                    document.getElementById('phone_error').innerHTML = "الرجاء إدخال رقم الهاتف المحمول";
+                        }else{
+                                    document.getElementById('phone_error').innerHTML = "Please enter the mobile number";
+                        }
+                        return false;
+                    }else{
+                        //
                     var re = /^(?:\+971|00971|0)?(?:50|51|52|55|56|2|3|4|6|7|9)\d{7}$/;
                     var check = re.test(mobile);
-                    if (mobile != "" && !check ) {
+                    if (!check ) {
                         document.getElementById('phone_error').style.display = 'inline';
                         if(language_ == 'ar'){
                                     document.getElementById('phone_error').innerHTML = "الرجاء إدخال رقم جوال صحيح";
@@ -186,8 +197,9 @@
                         }
                         return false;
                     } else {
+                        d = 'ok'
                         document.getElementById('phone_error').innerHTML = "";
-                        if (a == "ok" && b == "ok" && c == "ok") {
+                        if (a == "ok" && b == "ok" && c == "ok" && d == "ok") {
                             // clearTimeout(x)
                             console.log('First name -', $("#firstname").val())
                             console.log('Last name -', $("#lastname").val())
@@ -222,6 +234,7 @@
                             console.log("---else--")
                         }
                     }
+                } //
                 }
             }
         }
@@ -250,7 +263,7 @@
         <br><label id='email_error'></label>
         <br>
         <label id="mobile_head"></label>
-        <input type="tel" id="phone" placeholder="" name="phone" size="23">
+        <input type="tel" id="phone" placeholder="" required name="phone" size="23">
         <br><label id='phone_error'></label>
         <br>
         <input type="submit" value="Submit"  id="submit" >  &nbsp;
